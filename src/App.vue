@@ -16,7 +16,7 @@
       <section>
         <ul>
         <li v-for="(film, index) in filteredFilms" :key="index">
-          {{ film.title }}
+          {{ film.title }} 
           {{ film.release_date }}
         </li>
         </ul>
