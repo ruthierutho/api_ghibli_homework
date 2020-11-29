@@ -1,5 +1,5 @@
 <template>
-    <div v-if="filmDirector === this.film.director">
+    <!-- <div v-if="filmDirector === this.film.director">
         <h4>{{ film.director }}</h4>
         <ul>
         <li v-for="(film, index) in films" :key="index" :films="films">
@@ -7,19 +7,19 @@
         </li>
         </ul>
       
-    </div>
+    </div> -->
 </template>
 
 <script>
-export default {
-    name: 'film-director-detail',
-    props: ['films', 'filmDirector'],
+// export default {
+//     name: 'film-director-detail',
+//     props: ['films', 'filmDirector'],
 
 
-}
+// }
 </script>
 
 <style >
-
+/*  */
 
 </style>

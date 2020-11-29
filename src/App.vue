@@ -2,9 +2,10 @@
   <div>
     <h1 id="title">Studio Ghibli Films:</h1>
     <div  class="list-section">
-      <films-list class="list" :films='films'></films-list>
+      <film-list-item class="list" :films='films'></film-list-item>
        
     </div>
+
     <film-detail :film="selectedFilm"></film-detail>
     
       <div id="filterInputYear">
@@ -45,6 +46,7 @@
 import FilmDetail from './components/FilmDetail.vue';
 import FilmDirectorDetail from './components/FilmDirectorDetail.vue';
 import FilmsList from './components/FilmsList.vue';
+import FilmListItem from './components/FilmListItem.vue'
 import { eventBus } from './main';
 
 export default {
@@ -56,6 +58,7 @@ export default {
       selectedFilm: null,
       releaseDate: 1986,
       filmDirector: null,
+      // directorsList: [],
       
      
     };
@@ -65,9 +68,12 @@ export default {
     .then(results => results.json())
     .then(films => this.films = films)
 
+    // eventBus.$on('film-selected', (film) => {
+    //   this.selectedFilm = film
+    // })
     eventBus.$on('film-selected', (film) => {
       this.selectedFilm = film
-    })
+    } )
   },
   computed: {
         filteredFilms: function(){
@@ -80,9 +86,16 @@ export default {
         return this.films.filter((film) => {
           return film.director == this.filmDirector;
         });
-      }
+      },
+
+        // filterDirectors: function(){
+        //   this.films.forEach(film => {
+        //     this.directorsList.push(this.film.director)
+        //   });
+        //   return this.directorsList;
+        // }
     },
-  
+
 
 
   methods: {
@@ -94,7 +107,8 @@ export default {
   components: { 
     'films-list': FilmsList,
     'film-detail': FilmDetail,
-    'film-director-detail': FilmDirectorDetail
+    'film-director-detail': FilmDirectorDetail,
+    'film-list-item': FilmListItem
     
   },
   

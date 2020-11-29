@@ -12,8 +12,7 @@ export default {
     name: 'films-list',
     props: ['films'],
   components: { 
-      'film-list-item': FilmListItem 
-},
+      'film-list-item': FilmListItem },
 
 }
 </script>
