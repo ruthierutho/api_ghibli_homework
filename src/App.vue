@@ -14,7 +14,7 @@
 
       <section>
         <ul>
-        <li v-for="(film, index) in filteredFilms" :key="index" :film="film">
+        <li v-for="(film, index) in filteredFilms" :key="index">
           {{ film.title }}
           {{ film.release_date }}
         </li>
@@ -23,12 +23,14 @@
 
        <div id="filterInputDirector">
         <h3>Filter Films By Director</h3>
-        <input type="" v-model="releaseDate" min="1986" max="2020"/>
+        <select v-model="filmDirector">
+          <option v-for="(film, index) in films" :key="index">{{ film.director }}</option>
+        </select>
       </div>
 
       <section>
         <ul>
-        <li v-for="(film, index) in filteredFilms" :key="index" :film="film">
+        <li v-for="(film, index) in filteredFilmsDirector" :key="index" :film="film">
           {{ film.title }}
           {{ film.release_date }}
         </li>
@@ -52,7 +54,8 @@ export default {
     return {
       films: [],
       selectedFilm: null,
-      releaseDate: 2020,
+      releaseDate: 1986,
+      filmDirector: null,
       
      
     };
@@ -70,6 +73,12 @@ export default {
         filteredFilms: function(){
         return this.films.filter((film) => {
           return film.release_date == this.releaseDate;
+        });
+      },
+        
+        filteredFilmsDirector: function(){
+        return this.films.filter((film) => {
+          return film.director == this.filmDirector;
         });
       }
     },
