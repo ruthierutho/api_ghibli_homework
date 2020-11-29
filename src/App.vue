@@ -58,7 +58,7 @@ export default {
       selectedFilm: null,
       releaseDate: 1986,
       filmDirector: null,
-      // directorsList: [],
+      directorsList: [],
       
      
     };
@@ -88,21 +88,39 @@ export default {
         });
       },
 
-        // filterDirectors: function(){
-        //   this.films.forEach(film => {
-        //     this.directorsList.push(this.film.director)
-        //   });
-        //   return this.directorsList;
+        filterDirectors: function(){
+          return this.films.forEach((film) => {
+            this.directorsList.push(film.director);
+          });
+          
+          // let directorsList = [ ...new Set(this.directorsList) ];
+          // directorsList.map(director => { return value})
+        },
+
+        filterDirectorsMore: function() {
+           return this.directorsList = [ ...new Set(this.directorsList) ];
+          
+        },
+
+        // filterDirectorsNow: function(){        
+        // return this.directorsList = [ ...new Set(this.directorsList) ]
+        // return this.directorsList.filter((item, index) => this.directorsList.indexOf(item) === item);
         // }
+
+        // filterDirectors: function(film) {
+        //   for (director in film.director);
+        //   this.directorsList.push(director);
+        //   return this.directorsList
+        // }
+          
+        
     },
 
-
-
   methods: {
-      handleSelect(){
+    //   handleSelect(){
     
-      ('character-selected', this.selectedCharacter)
-    }
+    //   ('character-selected', this.selectedCharacter)
+    // }
   },
   components: { 
     'films-list': FilmsList,
