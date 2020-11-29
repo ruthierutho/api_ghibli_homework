@@ -16,9 +16,9 @@ export default {
 </script>
 
 <style >
-#description {
-    width: 20%;
-}
+/* #description {
+    width: 20%; */
+
 
 
 </style>

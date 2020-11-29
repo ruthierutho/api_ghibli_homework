@@ -3,12 +3,38 @@
     <h1 id="title">Studio Ghibli Films:</h1>
     <div  class="list-section">
       <films-list class="list" :films='films'></films-list>
-      <film-detail :film="selectedFilm"></film-detail>
        
     </div>
+    <film-detail :film="selectedFilm"></film-detail>
     
-     
-     <!-- <film-director-detail :filmDirector="filmDirector" :films="films"></film-director-detail> -->
+      <div id="filterInputYear">
+        <h3>Filter Films By Year</h3>
+        <input type="number" v-model.number="releaseDate" min="1988" max="2020"/>
+      </div>
+
+      <section>
+        <ul>
+        <li v-for="(film, index) in filteredFilms" :key="index" :film="film">
+          {{ film.title }}
+          {{ film.release_date }}
+        </li>
+        </ul>
+      </section>
+
+       <div id="filterInputDirector">
+        <h3>Filter Films By Director</h3>
+        <input type="" v-model="releaseDate" min="1986" max="2020"/>
+      </div>
+
+      <section>
+        <ul>
+        <li v-for="(film, index) in filteredFilms" :key="index" :film="film">
+          {{ film.title }}
+          {{ film.release_date }}
+        </li>
+        </ul>
+      </section>
+    
   </div>
 </template>
 
@@ -26,7 +52,7 @@ export default {
     return {
       films: [],
       selectedFilm: null,
-      filmDirector: null,
+      releaseDate: 2020,
       
      
     };
@@ -42,14 +68,14 @@ export default {
   },
   computed: {
         filteredFilms: function(){
-        return this.films.filter((account) => {
-          return account.balance >= this.filmDirector;
+        return this.films.filter((film) => {
+          return film.release_date == this.releaseDate;
         });
       }
     },
   
 
-  },
+
   methods: {
       handleSelect(){
     
@@ -68,12 +94,12 @@ export default {
 </script>
 
 <style>
-/* .list-section {
+.list {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
-  } */
+  }
 
 /* .list {
   width: 300px;
